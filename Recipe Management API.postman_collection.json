@@ -1,0 +1,585 @@
+{
+  "info": {
+    "_postman_id": "85aa8928-a88e-4b79-9e53-75420bd939ac",
+    "name": "Recipe Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52328090",
+    "_collection_link": "https://go.postman.co/collection/52328090-85aa8928-a88e-4b79-9e53-75420bd939ac?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Accounts",
+      "item": [
+        {
+          "name": "Register Api",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"creator1\",\n    \"email\": \"creator1@gmail.com\",\n    \"password\": \"test123\",\n    \"role\": \"creator\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/accounts/register/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "accounts",
+                "register",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Api",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"creator2\",\n    \"password\": \"creator123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/accounts/login/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "accounts",
+                "login",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Create Api",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 46259e29bea9b5fd19d6868e710462bbea78d106"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Pizza\",\n    \"description\": \"Cheesy pizza\",\n    \"prep_duration\": 20,\n    \"cook_duration\": 25,\n    \"ingredients\": [\n        {\n            \"name\": \"Cheese\",\n            \"image\": null\n        },\n        {\n            \"name\": \"Flour\",\n            \"image\": null\n        }\n    ],\n    \"steps\": [\n        {\n            \"step_number\": 1,\n            \"instruction\": \"Prepare dough\",\n            \"image\": null\n        },\n        {\n            \"step_number\": 2,\n            \"instruction\": \"Add toppings\",\n            \"image\": null\n        }\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Bulk Upload using excel",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token YOUR_CREATOR_TOKEN"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "type": "file",
+              "key": "file",
+              "src": "/C:/Users/91900/Desktop/Recipe Assignment/excel_files/recipe.xlsx"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/bulk_upload/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            "bulk_upload",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CREATE RECIPE WITH IMAGES",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 46259e29bea9b5fd19d6868e710462bbea78d106"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "type": "text",
+              "key": "title",
+              "value": "Pizza"
+            },
+            {
+              "type": "text",
+              "key": "description",
+              "value": "Cheesy pizza"
+            },
+            {
+              "type": "text",
+              "key": "prep_duration",
+              "value": "20"
+            },
+            {
+              "type": "text",
+              "key": "cook_duration",
+              "value": "25"
+            },
+            {
+              "type": "file",
+              "key": "thumbnail",
+              "src": "C:\\Users\\YourName\\Desktop\\pizza.jpg"
+            },
+            {
+              "type": "text",
+              "key": "ingredients[0]name",
+              "value": "Cheese"
+            },
+            {
+              "type": "file",
+              "key": "ingredients[0]image",
+              "src": "C:\\Users\\YourName\\Desktop\\cheese.jpg"
+            },
+            {
+              "type": "text",
+              "key": "ingredients[1]name",
+              "value": "Flour"
+            },
+            {
+              "type": "file",
+              "key": "ingredients[1]image",
+              "src": "C:\\Users\\YourName\\Desktop\\flour.jpg"
+            },
+            {
+              "type": "text",
+              "key": "steps[0]step_number",
+              "value": "1"
+            },
+            {
+              "type": "text",
+              "key": "steps[0]instruction",
+              "value": "Prepare dough"
+            },
+            {
+              "type": "file",
+              "key": "steps[0]image",
+              "src": "C:\\Users\\YourName\\Desktop\\step1.jpg"
+            },
+            {
+              "type": "text",
+              "key": "steps[1]step_number",
+              "value": "2"
+            },
+            {
+              "type": "text",
+              "key": "steps[1]instruction",
+              "value": "Add toppings"
+            },
+            {
+              "type": "file",
+              "key": "steps[1]image",
+              "src": "C:\\Users\\YourName\\Desktop\\step2.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Recipe Api",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 46259e29bea9b5fd19d6868e710462bbea78d106"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pagination",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 46259e29bea9b5fd19d6868e710462bbea78d106"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/?page=1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            ""
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Filtering",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 5a4ec7d0126159779eae2c5b31b1325c2c5d1fc8"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/?prep_duration=15",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            ""
+          ],
+          "query": [
+            {
+              "key": "prep_duration",
+              "value": "15"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get recipe detail",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 46259e29bea9b5fd19d6868e710462bbea78d106"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/1/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update recipe details",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 46259e29bea9b5fd19d6868e710462bbea78d106"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"description\": \"Updated pizza description\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/1/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Recipe",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 46259e29bea9b5fd19d6868e710462bbea78d106"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/1/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add to Favorites Viewer only",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 5a4ec7d0126159779eae2c5b31b1325c2c5d1fc8"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/1/favourite/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            "1",
+            "favourite",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download PDF",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token 5a4ec7d0126159779eae2c5b31b1325c2c5d1fc8"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/recipes/5/download_pdf/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "recipes",
+            "5",
+            "download_pdf",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
